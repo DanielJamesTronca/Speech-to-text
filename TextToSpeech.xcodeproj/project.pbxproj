@@ -14,6 +14,7 @@
 		349491BB2843AD0B0009B0AE /* TextToSpeechTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 349491BA2843AD0B0009B0AE /* TextToSpeechTests.swift */; };
 		349491C52843AD0B0009B0AE /* TextToSpeechUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 349491C42843AD0B0009B0AE /* TextToSpeechUITests.swift */; };
 		349491C72843AD0B0009B0AE /* TextToSpeechUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 349491C62843AD0B0009B0AE /* TextToSpeechUITestsLaunchTests.swift */; };
+		349491D728452D630009B0AE /* ConvertedTextViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 349491D628452D630009B0AE /* ConvertedTextViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -46,6 +47,7 @@
 		349491C42843AD0B0009B0AE /* TextToSpeechUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextToSpeechUITests.swift; sourceTree = "<group>"; };
 		349491C62843AD0B0009B0AE /* TextToSpeechUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextToSpeechUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		349491D32843B6140009B0AE /* TextToSpeech.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = TextToSpeech.entitlements; sourceTree = "<group>"; };
+		349491D628452D630009B0AE /* ConvertedTextViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConvertedTextViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -102,6 +104,7 @@
 				349491AC2843AD0A0009B0AE /* Assets.xcassets */,
 				349491AE2843AD0A0009B0AE /* LaunchScreen.storyboard */,
 				349491B12843AD0A0009B0AE /* Info.plist */,
+				349491D628452D630009B0AE /* ConvertedTextViewController.swift */,
 			);
 			path = TextToSpeech;
 			sourceTree = "<group>";
@@ -255,6 +258,7 @@
 			files = (
 				349491A82843AD090009B0AE /* ViewController.swift in Sources */,
 				349491A42843AD090009B0AE /* AppDelegate.swift in Sources */,
+				349491D728452D630009B0AE /* ConvertedTextViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
