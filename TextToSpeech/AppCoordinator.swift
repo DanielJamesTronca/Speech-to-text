@@ -35,4 +35,19 @@ extension AppCoordinator: DashboardViewControllerDelegate {
         documentPicker.allowsMultipleSelection = false
         dashboardViewController.present(documentPicker, animated: true)
     }
+    
+    func dashboardViewControllerDidPickDocument(from dashboardViewController: DashboardViewController, documentUrl: URL) {
+        let recognitionMangaer: DocumentRecognitionManager = DocumentRecognitionManager.shared
+        dashboardViewController.configure(with: appManager.createDashboardViewControllerConfiguration(with: documentUrl.lastPathComponent))
+        recognitionMangaer.processDocumentUrl(documentUrl: documentUrl) { [weak dashboardViewController] response in
+            DispatchQueue.main.async { [weak dashboardViewController] in
+                guard let dashboardViewController = dashboardViewController else { return }
+                if let response = response, !response.isEmpty {
+                    let convertedTextViewController: ConvertedTextViewController = ConvertedTextViewController(text: response)
+                    convertedTextViewController.title = documentUrl.lastPathComponent
+                    dashboardViewController.navigationController?.pushViewController(convertedTextViewController, animated: true)
+                }
+            }
+        }
+    }
 }

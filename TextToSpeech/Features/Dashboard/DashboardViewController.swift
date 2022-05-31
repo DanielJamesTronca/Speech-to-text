@@ -6,11 +6,10 @@
 //
 
 import UIKit
-import UniformTypeIdentifiers
-import Vision
 
 protocol DashboardViewControllerDelegate: AnyObject {
     func dashboardViewControllerDidTapAddDocument(from dashboardViewController: DashboardViewController)
+    func dashboardViewControllerDidPickDocument(from dashboardViewController: DashboardViewController, documentUrl: URL)
 }
 
 class DashboardViewController: UIViewController {
@@ -33,9 +32,15 @@ class DashboardViewController: UIViewController {
     
     var coordinator: AppCoordinator?
     
-    private let configuration: Configuration
+    var configuration: Configuration {
+        didSet {
+            DispatchQueue.main.async {
+                self.collectionView.reloadData()
+            }
+        }
+    }
     
-    private lazy var collectionView: UICollectionView = {
+    lazy var collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .vertical
         layout.minimumLineSpacing = 16.0
@@ -50,8 +55,16 @@ class DashboardViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = UIColor.black
+        navigationController?.navigationBar.prefersLargeTitles = true
         title = "Speech to text"
         layout()
+    }
+    
+    public func configure(with configuration: Configuration) {
+        self.configuration = configuration
+        DispatchQueue.main.async {
+            self.collectionView.reloadData()
+        }
     }
     
     private func layout() {
@@ -110,7 +123,7 @@ extension DashboardViewController: UICollectionViewDelegateFlowLayout {
         layout _: UICollectionViewLayout,
         insetForSectionAt section: Int
     ) -> UIEdgeInsets {
-        return UIEdgeInsets(top: 16.0, left: 16.0, bottom: 16.0, right: 16.0)
+        return UIEdgeInsets(top: .zero, left: 16.0, bottom: .zero, right: 16.0)
     }
     
     func collectionView(
@@ -125,69 +138,7 @@ extension DashboardViewController: UICollectionViewDelegateFlowLayout {
 }
 
 extension DashboardViewController: UIDocumentPickerDelegate {
-    
     func documentPicker(_ controller: UIDocumentPickerViewController, didPickDocumentAt url: URL) {
-        
-        var totalResponse: [String] = []
-        
-        if url.startAccessingSecurityScopedResource() {
-            print("Imported url: \(url)")
-            if let images = drawPDFfromURL(url: url) {
-                images.forEach {
-                    guard let cgImage = $0.cgImage else { return }
-                    //                    url.stopAccessingSecurityScopedResource()
-                    performRecognition(cgImage: cgImage, completionHandler: { response in
-                        totalResponse.append(contentsOf: response)
-                        //                        let viewController = ConvertedTextViewController(text: response)
-                        //                        self.navigationController?.pushViewController(viewController, animated: true)
-                    })
-                }
-                
-                let viewController = ConvertedTextViewController(text: totalResponse)
-                self.navigationController?.pushViewController(viewController, animated: true)
-            }
-        }
-    }
-    
-    func performRecognition(cgImage: CGImage, completionHandler: @escaping (_ response: [String]) -> Void) {
-        let requestHandler = VNImageRequestHandler(cgImage: cgImage)
-        
-        var responseArray: [String] = []
-        
-        let request = VNRecognizeTextRequest { (request, _) in
-            guard let observation = request.results as? [VNRecognizedTextObservation] else { return }
-            observation.forEach {
-                let topCandidate: [VNRecognizedText] = $0.topCandidates(1)
-                if let recognizedText: VNRecognizedText = topCandidate.first {
-                    responseArray.append(recognizedText.string)
-                }
-            }
-            completionHandler(responseArray)
-        }
-        request.recognitionLevel = VNRequestTextRecognitionLevel.accurate
-        try? requestHandler.perform([request])
-    }
-    
-    func drawPDFfromURL(url: URL) -> [UIImage]? {
-        
-        guard let document = CGPDFDocument(url as CFURL) else { return nil }
-        
-        var images: [UIImage] = []
-        
-        for i in 0...document.numberOfPages {
-            if let page = document.page(at: i) {
-                let pageRect = page.getBoxRect(.mediaBox)
-                let renderer = UIGraphicsImageRenderer(size: pageRect.size)
-                let img = renderer.image { ctx in
-                    UIColor.white.set()
-                    ctx.fill(pageRect)
-                    ctx.cgContext.translateBy(x: 0.0, y: pageRect.size.height)
-                    ctx.cgContext.scaleBy(x: 1.0, y: -1.0)
-                    ctx.cgContext.drawPDFPage(page)
-                }
-                images.append(img)
-            }
-        }
-        return images
+        delegate?.dashboardViewControllerDidPickDocument(from: self, documentUrl: url)
     }
 }

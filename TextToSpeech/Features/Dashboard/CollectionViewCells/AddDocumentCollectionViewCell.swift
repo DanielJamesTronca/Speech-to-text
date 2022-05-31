@@ -10,7 +10,7 @@ import UIKit
 class AddDocumentCollectionViewCell: UICollectionViewCell, Reusable {
     
     struct Configuration {
-        
+        let addLabel: String
     }
     
     private lazy var addLabel: UILabel = {
@@ -29,10 +29,12 @@ class AddDocumentCollectionViewCell: UICollectionViewCell, Reusable {
      }
     
     public func configure(with configuration: Configuration) {
-        
+        addLabel.text = configuration.addLabel
     }
     
     private func generateView() {
+        contentView.layer.cornerRadius = 16.0
+        contentView.clipsToBounds = true
         contentView.layer.borderWidth = 2.0
         contentView.layer.borderColor = UIColor.white.cgColor
         contentView.addSubview(addLabel)

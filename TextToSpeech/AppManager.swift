@@ -9,20 +9,30 @@ import Foundation
 
 class AppManager {
     
-    func createDashboardViewControllerConfiguration() -> DashboardViewController.Configuration {
+    func createDashboardViewControllerConfiguration(with url: String? = nil) -> DashboardViewController.Configuration {
         
         var cells: [DashboardCellItem] = []
         
         cells.append(
             DashboardCellItem(
                 cellConfiguration: .addDocumentCell(
-                    configuration: AddDocumentCollectionViewCell.Configuration()
+                    configuration: AddDocumentCollectionViewCell.Configuration(addLabel: "Aggiungi")
                 ),
                 cellAction: .didTapAdd
             )
         )
         
+        if let url = url {
+            cells.append(
+                DashboardCellItem(
+                    cellConfiguration: .addDocumentCell(
+                        configuration: AddDocumentCollectionViewCell.Configuration(addLabel: url)
+                    ),
+                    cellAction: .didTapAdd
+                )
+            )
+        }
+        
         return DashboardViewController.Configuration(source: [(header: "Ciao", cells: cells)])
     }
-    
 }
