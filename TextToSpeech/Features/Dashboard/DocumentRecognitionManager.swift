@@ -20,7 +20,8 @@ class DocumentRecognitionManager {
         
         if documentUrl.startAccessingSecurityScopedResource() {
             if let images = drawPDFfromURL(url: documentUrl) {
-                DispatchQueue.global(qos: .userInitiated).async {
+                DispatchQueue.global(qos: .userInitiated).async { [weak self] in
+                    guard let self = self else { completionHandler(nil); return }
                     images.forEach {
                         if let cgImage = $0.cgImage {
                             self.performRecognition(cgImage: cgImage) { response in

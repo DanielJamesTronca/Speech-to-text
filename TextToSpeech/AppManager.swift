@@ -33,6 +33,6 @@ class AppManager {
             )
         }
         
-        return DashboardViewController.Configuration(source: [(header: "Ciao", cells: cells)])
+        return DashboardViewController.Configuration(source: cells)
     }
 }

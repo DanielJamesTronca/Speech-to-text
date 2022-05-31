@@ -45,8 +45,8 @@ class ConvertedTextViewController: UIViewController {
         view.addSubview(textView)
         NSLayoutConstraint.activate([
             textView.topAnchor.constraint(equalTo: view.topAnchor),
-            textView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            textView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            textView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16.0),
+            textView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 16.0),
             textView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
         ])
         textView.text = convertedText.joined(separator: "\n")
@@ -63,7 +63,7 @@ class ConvertedTextViewController: UIViewController {
         let singleString = convertedText.joined(separator: "\n")
         let utterance = AVSpeechUtterance(string: singleString)
         utterance.voice = AVSpeechSynthesisVoice(language: "en-GB")
-        utterance.rate = 0.4
+        utterance.rate = 0.5
         synthesizer.delegate = self
         synthesizer.speak(utterance)
         
@@ -91,9 +91,7 @@ extension ConvertedTextViewController: AVSpeechSynthesizerDelegate {
         
         // Make sure that the text will keep the original font by setting it as an attribute.
         attributedString.addAttribute(NSAttributedString.Key.font, value: fontAttribute!, range: NSMakeRange(0, attributedString.string.count))
-        
-//        textView.scrollRangeToVisible(rangeInTotalText)
-        
+                
         // Begin editing the text storage.
         textView.textStorage.beginEditing()
         

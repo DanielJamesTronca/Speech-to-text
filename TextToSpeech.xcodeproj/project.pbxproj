@@ -11,6 +11,7 @@
 		34773F32284645FE0084F611 /* DashboardCellEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34773F31284645FE0084F611 /* DashboardCellEnum.swift */; };
 		34773F34284646060084F611 /* DashboardCellAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34773F33284646060084F611 /* DashboardCellAction.swift */; };
 		34773F362846477F0084F611 /* DocumentRecognitionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34773F352846477F0084F611 /* DocumentRecognitionManager.swift */; };
+		34773F3828466E010084F611 /* DocumentCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34773F3728466E010084F611 /* DocumentCollectionViewCell.swift */; };
 		349491A42843AD090009B0AE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 349491A32843AD090009B0AE /* AppDelegate.swift */; };
 		349491A82843AD090009B0AE /* DashboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 349491A72843AD090009B0AE /* DashboardViewController.swift */; };
 		349491AD2843AD0A0009B0AE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 349491AC2843AD0A0009B0AE /* Assets.xcassets */; };
@@ -48,6 +49,7 @@
 		34773F31284645FE0084F611 /* DashboardCellEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardCellEnum.swift; sourceTree = "<group>"; };
 		34773F33284646060084F611 /* DashboardCellAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardCellAction.swift; sourceTree = "<group>"; };
 		34773F352846477F0084F611 /* DocumentRecognitionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentRecognitionManager.swift; sourceTree = "<group>"; };
+		34773F3728466E010084F611 /* DocumentCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentCollectionViewCell.swift; sourceTree = "<group>"; };
 		349491A02843AD090009B0AE /* TextToSpeech.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TextToSpeech.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		349491A32843AD090009B0AE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		349491A72843AD090009B0AE /* DashboardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardViewController.swift; sourceTree = "<group>"; };
@@ -205,6 +207,7 @@
 			isa = PBXGroup;
 			children = (
 				349491E4284640460009B0AE /* AddDocumentCollectionViewCell.swift */,
+				34773F3728466E010084F611 /* DocumentCollectionViewCell.swift */,
 			);
 			path = CollectionViewCells;
 			sourceTree = "<group>";
@@ -362,6 +365,7 @@
 				34773F30284645F60084F611 /* DashboardCellItem.swift in Sources */,
 				349491A82843AD090009B0AE /* DashboardViewController.swift in Sources */,
 				349491E5284640460009B0AE /* AddDocumentCollectionViewCell.swift in Sources */,
+				34773F3828466E010084F611 /* DocumentCollectionViewCell.swift in Sources */,
 				349491A42843AD090009B0AE /* AppDelegate.swift in Sources */,
 				34773F32284645FE0084F611 /* DashboardCellEnum.swift in Sources */,
 				34773F34284646060084F611 /* DashboardCellAction.swift in Sources */,

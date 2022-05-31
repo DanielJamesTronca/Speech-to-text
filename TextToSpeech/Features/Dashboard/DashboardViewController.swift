@@ -15,7 +15,7 @@ protocol DashboardViewControllerDelegate: AnyObject {
 class DashboardViewController: UIViewController {
     
     struct Configuration {
-        let source: [(header: String, cells: [DashboardCellItem])]
+        var source: [DashboardCellItem]
     }
     
     init(configuration: Configuration) {
@@ -79,6 +79,7 @@ class DashboardViewController: UIViewController {
         ])
         
         collectionView.register(cell: AddDocumentCollectionViewCell.self)
+        collectionView.register(cell: DocumentCollectionViewCell.self)
     }
     
     override func viewDidLayoutSubviews() {
@@ -89,7 +90,7 @@ class DashboardViewController: UIViewController {
 
 extension DashboardViewController: UICollectionViewDelegate {
     func collectionView(_: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        switch configuration.source[indexPath.section].cells[indexPath.row].cellAction {
+        switch configuration.source[indexPath.row].cellAction {
         case .didTapAdd:
             delegate?.dashboardViewControllerDidTapAddDocument(from: self)
         case .none:
@@ -99,18 +100,19 @@ extension DashboardViewController: UICollectionViewDelegate {
 }
 
 extension DashboardViewController: UICollectionViewDataSource {
-    func numberOfSections(in _: UICollectionView) -> Int {
+    
+    func collectionView(_: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return configuration.source.count
     }
     
-    func collectionView(_: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return configuration.source[section].cells.count
-    }
-    
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        switch configuration.source[indexPath.section].cells[indexPath.row].cellConfiguration {
+        switch configuration.source[indexPath.row].cellConfiguration {
         case .addDocumentCell(configuration: let configuration):
             let cell = collectionView.dequeue(indexPath: indexPath) as AddDocumentCollectionViewCell
+            cell.configure(with: configuration)
+            return cell
+        case .documentCell(configuration: let configuration):
+            let cell = collectionView.dequeue(indexPath: indexPath) as DocumentCollectionViewCell
             cell.configure(with: configuration)
             return cell
         }

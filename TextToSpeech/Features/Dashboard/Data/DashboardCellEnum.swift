@@ -9,4 +9,5 @@ import Foundation
 
 enum DashboardCellEnum {
     case addDocumentCell(configuration: AddDocumentCollectionViewCell.Configuration)
+    case documentCell(configuration: DocumentCollectionViewCell.Configuration)
 }
