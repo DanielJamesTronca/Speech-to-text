@@ -15,6 +15,7 @@ class AddDocumentCollectionViewCell: UICollectionViewCell, Reusable {
     
     private lazy var addLabel: UILabel = {
         let label: UILabel = UILabel()
+        label.textColor = UIColor.systemBlue
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
@@ -50,7 +51,7 @@ class AddDocumentCollectionViewCell: UICollectionViewCell, Reusable {
 
 extension UIView {
   func addDashedBorder() {
-    let color = UIColor.blue.cgColor
+    let color = UIColor.systemBlue.cgColor
 
     let shapeLayer:CAShapeLayer = CAShapeLayer()
     let frameSize = self.frame.size

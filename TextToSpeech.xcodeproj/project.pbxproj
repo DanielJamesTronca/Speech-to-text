@@ -35,6 +35,7 @@
 		349491E5284640460009B0AE /* AddDocumentCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 349491E4284640460009B0AE /* AddDocumentCollectionViewCell.swift */; };
 		349491E9284640A20009B0AE /* Reusable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 349491E8284640A20009B0AE /* Reusable.swift */; };
 		349491EB284640C60009B0AE /* UICollectionView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 349491EA284640C60009B0AE /* UICollectionView+Extension.swift */; };
+		34C7B1992847DE7D00A5F68B /* SettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34C7B1982847DE7D00A5F68B /* SettingsTableViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -88,6 +89,7 @@
 		349491E4284640460009B0AE /* AddDocumentCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddDocumentCollectionViewCell.swift; sourceTree = "<group>"; };
 		349491E8284640A20009B0AE /* Reusable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reusable.swift; sourceTree = "<group>"; };
 		349491EA284640C60009B0AE /* UICollectionView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionView+Extension.swift"; sourceTree = "<group>"; };
+		34C7B1982847DE7D00A5F68B /* SettingsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -221,6 +223,7 @@
 		349491DF28463FB50009B0AE /* Features */ = {
 			isa = PBXGroup;
 			children = (
+				34C7B1972847DE5F00A5F68B /* Settings */,
 				349491E128463FC20009B0AE /* ConvertedText */,
 				349491E028463FBB0009B0AE /* Dashboard */,
 			);
@@ -280,6 +283,14 @@
 				349491E8284640A20009B0AE /* Reusable.swift */,
 			);
 			path = Utils;
+			sourceTree = "<group>";
+		};
+		34C7B1972847DE5F00A5F68B /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				34C7B1982847DE7D00A5F68B /* SettingsTableViewController.swift */,
+			);
+			path = Settings;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -434,6 +445,7 @@
 				349491D728452D630009B0AE /* ConvertedTextViewController.swift in Sources */,
 				349491E9284640A20009B0AE /* Reusable.swift in Sources */,
 				34773F5128475B1E0084F611 /* DocumentStorage.swift in Sources */,
+				34C7B1992847DE7D00A5F68B /* SettingsTableViewController.swift in Sources */,
 				34773F3F28474EDA0084F611 /* PersistenceContainer.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

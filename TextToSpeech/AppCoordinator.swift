@@ -78,4 +78,9 @@ extension AppCoordinator: DashboardViewControllerDelegate {
         convertedTextViewController.title = document.title
         dashboardViewController.navigationController?.pushViewController(convertedTextViewController, animated: true)
     }
+    
+    func dashboardViewControllerDidTapSettings(from dashboardViewController: DashboardViewController) {
+        let settingsViewController: SettingsTableViewController = SettingsTableViewController()
+        dashboardViewController.navigationController?.pushViewController(settingsViewController, animated: true)
+    }
 }

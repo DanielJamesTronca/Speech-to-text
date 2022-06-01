@@ -59,14 +59,14 @@ class DocumentCollectionViewCell: UICollectionViewCell, Reusable {
         label.font = UIFont.systemFont(ofSize: 16.0)
         label.numberOfLines = 0
         label.textAlignment = .center
-        label.textColor = UIColor.white
+        label.textColor = UIColor.systemBlue
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
     
     private lazy var dateLabel: UILabel = {
         let label: UILabel = UILabel()
-        label.font = UIFont.systemFont(ofSize: 12.0)
+        label.font = UIFont.systemFont(ofSize: 10.0)
         label.numberOfLines = 0
         label.textAlignment = .center
         label.textColor = UIColor.gray

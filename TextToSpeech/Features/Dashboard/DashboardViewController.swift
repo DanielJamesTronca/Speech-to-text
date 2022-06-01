@@ -11,6 +11,7 @@ protocol DashboardViewControllerDelegate: AnyObject {
     func dashboardViewControllerDidTapAddDocument(from dashboardViewController: DashboardViewController)
     func dashboardViewControllerDidPickDocument(from dashboardViewController: DashboardViewController, documentUrl: URL)
     func dashboardViewControllerDidTapDocument(from dashboardViewController: DashboardViewController, document: DocumentData)
+    func dashboardViewControllerDidTapSettings(from dashboardViewController: DashboardViewController)
 }
 
 class DashboardViewController: UIViewController {
@@ -44,7 +45,7 @@ class DashboardViewController: UIViewController {
     lazy var collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .vertical
-        layout.minimumLineSpacing = 16.0
+        layout.minimumLineSpacing = 32.0
         layout.minimumInteritemSpacing = 16.0
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collectionView.translatesAutoresizingMaskIntoConstraints = false
@@ -54,12 +55,20 @@ class DashboardViewController: UIViewController {
         return collectionView
     }()
     
+    private lazy var searchController: UISearchController = UISearchController(searchResultsController: nil)
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = UIColor.appBackgroundColor
         navigationController?.navigationBar.prefersLargeTitles = true
         title = "Speech to text"
         layout()
+        configureSearchController()
+    }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        collectionView.frame = view.bounds
     }
     
     public func configure(with configuration: Configuration) {
@@ -92,9 +101,24 @@ class DashboardViewController: UIViewController {
         collectionView.register(cell: DocumentCollectionViewCell.self)
     }
     
-    override func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
-        collectionView.frame = view.bounds
+    private func configureSearchController() {
+        searchController.searchBar.delegate = self
+        searchController.hidesNavigationBarDuringPresentation = true
+        searchController.obscuresBackgroundDuringPresentation = false
+        searchController.searchBar.scopeButtonTitles = ["Name", "Format"]
+        searchController.searchBar.showsScopeBar = true
+        searchController.searchBar.placeholder = "Search..."
+        searchController.searchBar.sizeToFit()
+        navigationItem.searchController = searchController
+        navigationItem.hidesSearchBarWhenScrolling = false
+        let leadingBarButton = UIBarButtonItem(image: UIImage(systemName: "gearshape"), style: .plain, target: self, action: #selector(addTapped))
+        navigationItem.leftBarButtonItem = leadingBarButton
+        definesPresentationContext = true
+    }
+    
+    @objc
+    private func addTapped() {
+        delegate?.dashboardViewControllerDidTapSettings(from: self)
     }
 }
 
@@ -147,6 +171,17 @@ extension DashboardViewController: UICollectionViewDelegateFlowLayout {
     ) -> CGSize {
         let collectionViewSize = collectionView.frame.size.width - 65.0
         return CGSize(width: collectionViewSize/3, height: 196)
+    }
+}
+
+extension DashboardViewController: UISearchBarDelegate {
+    
+    func searchBar(_ searchBar: UISearchBar, selectedScopeButtonIndexDidChange selectedScope: Int) {
+        print(selectedScope)
+    }
+    
+    func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
+        print(searchBar.text)
     }
 }
 
