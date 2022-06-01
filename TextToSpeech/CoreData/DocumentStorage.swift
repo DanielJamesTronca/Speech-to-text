@@ -9,12 +9,12 @@ import Foundation
 import CoreData
 
 struct DocumentData {
-    var content: String?
-    var dateCreated: Date?
+    var content: String
+    var dateCreated: Date
     var format: String?
-    var id: UUID?
-    var readingTime: Float
-    var title: String?
+    var id: UUID
+    var readingTime: Float?
+    var title: String
     
     func generateCoreDataDocumentObject(persistenceContainer: NSManagedObjectContext) -> DocumentObject? {
         let coreDataDocument = DocumentObject(context: persistenceContainer)
@@ -22,7 +22,7 @@ struct DocumentData {
         coreDataDocument.dateCreated = self.dateCreated
         coreDataDocument.format = self.format
         coreDataDocument.id = self.id
-        coreDataDocument.readingTime = self.readingTime
+        coreDataDocument.readingTime = self.readingTime ?? 0.0
         coreDataDocument.title = self.title
         return coreDataDocument
     }

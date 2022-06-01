@@ -17,10 +17,10 @@
 		34773F3F28474EDA0084F611 /* PersistenceContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34773F3E28474EDA0084F611 /* PersistenceContainer.swift */; };
 		34773F4228474EF10084F611 /* CoreDataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 34773F4028474EF10084F611 /* CoreDataModel.xcdatamodeld */; };
 		34773F5128475B1E0084F611 /* DocumentStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34773F5028475B1E0084F611 /* DocumentStorage.swift */; };
-		34773F6E284760020084F611 /* DocumentObjects+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34773F6A284760020084F611 /* DocumentObjects+CoreDataClass.swift */; };
-		34773F6F284760020084F611 /* DocumentObjects+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34773F6B284760020084F611 /* DocumentObjects+CoreDataProperties.swift */; };
-		34773F70284760020084F611 /* DocumentObject+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34773F6C284760020084F611 /* DocumentObject+CoreDataClass.swift */; };
-		34773F71284760020084F611 /* DocumentObject+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34773F6D284760020084F611 /* DocumentObject+CoreDataProperties.swift */; };
+		34773F7A284768130084F611 /* DocumentObject+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34773F76284768130084F611 /* DocumentObject+CoreDataClass.swift */; };
+		34773F7B284768130084F611 /* DocumentObject+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34773F77284768130084F611 /* DocumentObject+CoreDataProperties.swift */; };
+		34773F7C284768130084F611 /* DocumentObjects+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34773F78284768130084F611 /* DocumentObjects+CoreDataClass.swift */; };
+		34773F7D284768130084F611 /* DocumentObjects+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34773F79284768130084F611 /* DocumentObjects+CoreDataProperties.swift */; };
 		349491A42843AD090009B0AE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 349491A32843AD090009B0AE /* AppDelegate.swift */; };
 		349491A82843AD090009B0AE /* DashboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 349491A72843AD090009B0AE /* DashboardViewController.swift */; };
 		349491AD2843AD0A0009B0AE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 349491AC2843AD0A0009B0AE /* Assets.xcassets */; };
@@ -64,10 +64,10 @@
 		34773F3E28474EDA0084F611 /* PersistenceContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceContainer.swift; sourceTree = "<group>"; };
 		34773F4128474EF10084F611 /* CoreDataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = CoreDataModel.xcdatamodel; sourceTree = "<group>"; };
 		34773F5028475B1E0084F611 /* DocumentStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentStorage.swift; sourceTree = "<group>"; };
-		34773F6A284760020084F611 /* DocumentObjects+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DocumentObjects+CoreDataClass.swift"; sourceTree = "<group>"; };
-		34773F6B284760020084F611 /* DocumentObjects+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DocumentObjects+CoreDataProperties.swift"; sourceTree = "<group>"; };
-		34773F6C284760020084F611 /* DocumentObject+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DocumentObject+CoreDataClass.swift"; sourceTree = "<group>"; };
-		34773F6D284760020084F611 /* DocumentObject+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DocumentObject+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		34773F76284768130084F611 /* DocumentObject+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DocumentObject+CoreDataClass.swift"; sourceTree = "<group>"; };
+		34773F77284768130084F611 /* DocumentObject+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DocumentObject+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		34773F78284768130084F611 /* DocumentObjects+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DocumentObjects+CoreDataClass.swift"; sourceTree = "<group>"; };
+		34773F79284768130084F611 /* DocumentObjects+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DocumentObjects+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		349491A02843AD090009B0AE /* TextToSpeech.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TextToSpeech.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		349491A32843AD090009B0AE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		349491A72843AD090009B0AE /* DashboardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardViewController.swift; sourceTree = "<group>"; };
@@ -127,10 +127,10 @@
 		34773F4728474F7E0084F611 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				34773F6A284760020084F611 /* DocumentObjects+CoreDataClass.swift */,
-				34773F6B284760020084F611 /* DocumentObjects+CoreDataProperties.swift */,
-				34773F6C284760020084F611 /* DocumentObject+CoreDataClass.swift */,
-				34773F6D284760020084F611 /* DocumentObject+CoreDataProperties.swift */,
+				34773F76284768130084F611 /* DocumentObject+CoreDataClass.swift */,
+				34773F77284768130084F611 /* DocumentObject+CoreDataProperties.swift */,
+				34773F78284768130084F611 /* DocumentObjects+CoreDataClass.swift */,
+				34773F79284768130084F611 /* DocumentObjects+CoreDataProperties.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -403,21 +403,21 @@
 			buildActionMask = 2147483647;
 			files = (
 				34773F362846477F0084F611 /* DocumentRecognitionManager.swift in Sources */,
+				34773F7B284768130084F611 /* DocumentObject+CoreDataProperties.swift in Sources */,
+				34773F7D284768130084F611 /* DocumentObjects+CoreDataProperties.swift in Sources */,
 				349491EB284640C60009B0AE /* UICollectionView+Extension.swift in Sources */,
+				34773F7C284768130084F611 /* DocumentObjects+CoreDataClass.swift in Sources */,
 				349491D928463C070009B0AE /* AppCoordinator.swift in Sources */,
-				34773F71284760020084F611 /* DocumentObject+CoreDataProperties.swift in Sources */,
 				349491DB28463E5D0009B0AE /* AppManager.swift in Sources */,
 				34773F30284645F60084F611 /* DashboardCellItem.swift in Sources */,
 				349491A82843AD090009B0AE /* DashboardViewController.swift in Sources */,
 				34773F4228474EF10084F611 /* CoreDataModel.xcdatamodeld in Sources */,
-				34773F70284760020084F611 /* DocumentObject+CoreDataClass.swift in Sources */,
-				34773F6E284760020084F611 /* DocumentObjects+CoreDataClass.swift in Sources */,
 				349491E5284640460009B0AE /* AddDocumentCollectionViewCell.swift in Sources */,
 				34773F3C28474B780084F611 /* UIColor+Extension.swift in Sources */,
 				34773F3828466E010084F611 /* DocumentCollectionViewCell.swift in Sources */,
 				349491A42843AD090009B0AE /* AppDelegate.swift in Sources */,
+				34773F7A284768130084F611 /* DocumentObject+CoreDataClass.swift in Sources */,
 				34773F32284645FE0084F611 /* DashboardCellEnum.swift in Sources */,
-				34773F6F284760020084F611 /* DocumentObjects+CoreDataProperties.swift in Sources */,
 				34773F34284646060084F611 /* DashboardCellAction.swift in Sources */,
 				349491D728452D630009B0AE /* ConvertedTextViewController.swift in Sources */,
 				349491E9284640A20009B0AE /* Reusable.swift in Sources */,

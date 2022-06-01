@@ -11,7 +11,6 @@ import CoreData
 
 @objc(DocumentObject)
 public class DocumentObject: NSManagedObject {
-
     func convertToDocumentData() -> DocumentData {
         return DocumentData(content: self.content, dateCreated: self.dateCreated, format: self.format, id: self.id, readingTime: self.readingTime, title: self.title)
     }

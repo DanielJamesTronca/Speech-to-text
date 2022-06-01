@@ -46,38 +46,35 @@ extension AppCoordinator: DashboardViewControllerDelegate {
                 isLoading: true
             )
         )
-        recognitionMangaer.processDocumentUrl(documentUrl: documentUrl) { [weak dashboardViewController] response in
+        recognitionMangaer.processDocumentUrl(documentUrl: documentUrl) { [weak dashboardViewController] document in
             DispatchQueue.main.async { [weak dashboardViewController, weak self] in
                 guard let self = self, let dashboardViewController = dashboardViewController else { return }
                 dashboardViewController.removeNewDocument()
                 dashboardViewController.addNewDocument(
                     documentConfiguration: self.appManager.createDashboardViewControllerNewDocumentConfiguration(
                         documentName: documentUrl.lastPathComponent,
-                        isLoading: true
+                        isLoading: false
                     )
                 )
-                if let response = response, !response.isEmpty {
-                    let convertedText = response.joined(separator: "\n")
-                    let document = DocumentData(
-                        content: convertedText,
-                        dateCreated: Date(),
-                        format: "pdf",
-                        id: UUID(),
-                        readingTime: 18.0,
-                        title: documentUrl.lastPathComponent
-                    )
-                    DocumentStorage.shared.saveDocument(document: document) { success in
+                if let document = document {
+                    DocumentStorage.shared.saveDocument(document: document) { [weak dashboardViewController] success in
+                        guard let dashboardViewController = dashboardViewController else { return }
                         if success {
-                            print("A")
+                            let convertedTextViewController: ConvertedTextViewController = ConvertedTextViewController(document: document)
+                            convertedTextViewController.title = document.title
+                            dashboardViewController.navigationController?.pushViewController(convertedTextViewController, animated: true)
                         } else {
                             print("NOOO")
                         }
                     }
-                    let convertedTextViewController: ConvertedTextViewController = ConvertedTextViewController(text: convertedText)
-                    convertedTextViewController.title = documentUrl.lastPathComponent
-                    dashboardViewController.navigationController?.pushViewController(convertedTextViewController, animated: true)
                 }
             }
         }
+    }
+    
+    func dashboardViewControllerDidTapDocument(from dashboardViewController: DashboardViewController, document: DocumentData) {
+        let convertedTextViewController: ConvertedTextViewController = ConvertedTextViewController(document: document)
+        convertedTextViewController.title = document.title
+        dashboardViewController.navigationController?.pushViewController(convertedTextViewController, animated: true)
     }
 }

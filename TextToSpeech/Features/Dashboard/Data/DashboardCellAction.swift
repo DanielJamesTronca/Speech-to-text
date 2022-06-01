@@ -9,5 +9,6 @@ import Foundation
 
 enum DashboardCellAction {
     case didTapAdd
+    case didTapDocument(document: DocumentData)
     case none
 }

@@ -10,6 +10,7 @@ import UIKit
 protocol DashboardViewControllerDelegate: AnyObject {
     func dashboardViewControllerDidTapAddDocument(from dashboardViewController: DashboardViewController)
     func dashboardViewControllerDidPickDocument(from dashboardViewController: DashboardViewController, documentUrl: URL)
+    func dashboardViewControllerDidTapDocument(from dashboardViewController: DashboardViewController, document: DocumentData)
 }
 
 class DashboardViewController: UIViewController {
@@ -102,6 +103,8 @@ extension DashboardViewController: UICollectionViewDelegate {
         switch configuration.source[indexPath.row].cellAction {
         case .didTapAdd:
             delegate?.dashboardViewControllerDidTapAddDocument(from: self)
+        case .didTapDocument(document: let document):
+            self.delegate?.dashboardViewControllerDidTapDocument(from: self, document: document)
         case .none:
             break
         }

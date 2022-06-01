@@ -14,7 +14,7 @@ class DocumentRecognitionManager {
     
     static let shared: DocumentRecognitionManager = DocumentRecognitionManager()
     
-    func processDocumentUrl(documentUrl: URL, completionHandler: @escaping (_ response: [String]?) -> Void) {
+    func processDocumentUrl(documentUrl: URL, completionHandler: @escaping (_ document: DocumentData?) -> Void) {
         
         var convertedDocument: [String] = []
         
@@ -30,9 +30,29 @@ class DocumentRecognitionManager {
                         }
                     }
                     documentUrl.stopAccessingSecurityScopedResource()
-                    completionHandler(convertedDocument)
+                    var readingTime: Float {
+                        let wordCount = convertedDocument
+                            .joined(separator: "\n")
+                            .components(separatedBy: .whitespacesAndNewlines)
+                            .filter { !$0.isEmpty }
+                            .count
+                        return Float(wordCount / 200)
+                    }
+                    let document = DocumentData(
+                        content: convertedDocument.joined(separator: "\n"),
+                        dateCreated: Date(),
+                        format: documentUrl.pathExtension,
+                        id: UUID(),
+                        readingTime: readingTime,
+                        title: documentUrl.lastPathComponent
+                    )
+                    completionHandler(document)
                 }
+            } else {
+                completionHandler(nil)
             }
+        } else {
+            completionHandler(nil)
         }
     }
     
