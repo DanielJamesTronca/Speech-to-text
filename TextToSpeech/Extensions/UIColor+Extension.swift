@@ -10,6 +10,6 @@ import UIKit
 
 extension UIColor {
     
-    public static let backgroundColor: UIColor = UIColor(named: "background-color")!
+    public static let appBackgroundColor: UIColor = UIColor(named: "background-color")!
     
 }

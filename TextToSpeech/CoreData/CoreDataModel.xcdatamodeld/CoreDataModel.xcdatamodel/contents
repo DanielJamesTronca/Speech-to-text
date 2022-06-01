@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="20086" systemVersion="21E258" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="DocumentObject" representedClassName="DocumentObject" syncable="YES">
+        <attribute name="content" optional="YES" attributeType="String"/>
+        <attribute name="dateCreated" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="format" optional="YES" attributeType="String"/>
+        <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="readingTime" optional="YES" attributeType="Float" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="title" optional="YES" attributeType="String"/>
+        <relationship name="documents" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="DocumentObjects" inverseName="documentList" inverseEntity="DocumentObjects"/>
+    </entity>
+    <entity name="DocumentObjects" representedClassName=".DocumentObjects" syncable="YES">
+        <relationship name="documentList" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="DocumentObject" inverseName="documents" inverseEntity="DocumentObject"/>
+    </entity>
+    <elements>
+        <element name="DocumentObject" positionX="-63" positionY="-18" width="128" height="134"/>
+        <element name="DocumentObjects" positionX="-54" positionY="36" width="128" height="44"/>
+    </elements>
+</model>

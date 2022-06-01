@@ -47,7 +47,7 @@ class DashboardViewController: UIViewController {
         layout.minimumInteritemSpacing = 16.0
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collectionView.translatesAutoresizingMaskIntoConstraints = false
-        collectionView.backgroundColor = UIColor.black
+        collectionView.backgroundColor = UIColor.appBackgroundColor
         collectionView.showsVerticalScrollIndicator = false
         collectionView.alwaysBounceVertical = true
         return collectionView
@@ -55,7 +55,7 @@ class DashboardViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = UIColor.backgroundColor
+        view.backgroundColor = UIColor.appBackgroundColor
         navigationController?.navigationBar.prefersLargeTitles = true
         title = "Speech to text"
         layout()

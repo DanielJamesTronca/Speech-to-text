@@ -9,7 +9,7 @@ import Foundation
 
 class AppManager {
     
-    func createDashboardViewControllerConfiguration(with url: String? = nil) -> DashboardViewController.Configuration {
+    func createDashboardViewControllerConfiguration(documents: [DocumentData]?) -> DashboardViewController.Configuration {
         
         var cells: [DashboardCellItem] = []
         
@@ -22,15 +22,17 @@ class AppManager {
             )
         )
         
-        if let url = url {
-            cells.append(
-                DashboardCellItem(
-                    cellConfiguration: .addDocumentCell(
-                        configuration: AddDocumentCollectionViewCell.Configuration(addLabel: url)
-                    ),
-                    cellAction: .didTapAdd
+        if let documents = documents {
+            documents.forEach {
+                cells.append(
+                    DashboardCellItem(
+                        cellConfiguration: .addDocumentCell(
+                            configuration: AddDocumentCollectionViewCell.Configuration(addLabel: $0.title!)
+                        ),
+                        cellAction: .none
+                    )
                 )
-            )
+            }
         }
         
         return DashboardViewController.Configuration(source: cells)

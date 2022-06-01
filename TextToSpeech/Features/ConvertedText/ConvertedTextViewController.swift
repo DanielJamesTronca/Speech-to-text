@@ -10,7 +10,7 @@ import AVFoundation
 
 class ConvertedTextViewController: UIViewController {
     
-    init(text: [String]) {
+    init(text: String) {
         self.convertedText = text
         super.init(nibName: nil, bundle: nil)
     }
@@ -20,7 +20,7 @@ class ConvertedTextViewController: UIViewController {
         fatalError("init(coder:) has not been implemented")
     }
     
-    private var convertedText: [String] = []
+    private var convertedText: String!
     
     var spokenTextLengths: Int = 0
     
@@ -49,7 +49,7 @@ class ConvertedTextViewController: UIViewController {
             textView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 16.0),
             textView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
         ])
-        textView.text = convertedText.joined(separator: "\n")
+        textView.text = convertedText
         textView.setContentOffset(.zero, animated: false)
         textView.layoutIfNeeded()
     }
@@ -60,8 +60,7 @@ class ConvertedTextViewController: UIViewController {
     }
     
     private func readText() {
-        let singleString = convertedText.joined(separator: "\n")
-        let utterance = AVSpeechUtterance(string: singleString)
+        let utterance = AVSpeechUtterance(string: convertedText)
         utterance.voice = AVSpeechSynthesisVoice(language: "en-GB")
         utterance.rate = 0.5
         synthesizer.delegate = self

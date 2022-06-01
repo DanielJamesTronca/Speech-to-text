@@ -19,11 +19,13 @@ class AppCoordinator {
     }
     
     func start() {
-        let configuration = appManager.createDashboardViewControllerConfiguration()
-        let viewController: DashboardViewController = DashboardViewController(configuration: configuration)
-        viewController.coordinator = self
-        viewController.delegate = self
-        navigationController.pushViewController(viewController, animated: true)
+        DocumentStorage.shared.getDocuments { documents in
+            let configuration = self.appManager.createDashboardViewControllerConfiguration(documents: documents)
+            let viewController: DashboardViewController = DashboardViewController(configuration: configuration)
+            viewController.coordinator = self
+            viewController.delegate = self
+            self.navigationController.pushViewController(viewController, animated: true)
+        }
     }
 }
 
@@ -55,7 +57,23 @@ extension AppCoordinator: DashboardViewControllerDelegate {
                     )
                 )
                 if let response = response, !response.isEmpty {
-                    let convertedTextViewController: ConvertedTextViewController = ConvertedTextViewController(text: response)
+                    let convertedText = response.joined(separator: "\n")
+                    let document = DocumentData(
+                        content: convertedText,
+                        dateCreated: Date(),
+                        format: "pdf",
+                        id: UUID(),
+                        readingTime: 18.0,
+                        title: documentUrl.lastPathComponent
+                    )
+                    DocumentStorage.shared.saveDocument(document: document) { success in
+                        if success {
+                            print("A")
+                        } else {
+                            print("NOOO")
+                        }
+                    }
+                    let convertedTextViewController: ConvertedTextViewController = ConvertedTextViewController(text: convertedText)
                     convertedTextViewController.title = documentUrl.lastPathComponent
                     dashboardViewController.navigationController?.pushViewController(convertedTextViewController, animated: true)
                 }
