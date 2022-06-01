@@ -9,12 +9,12 @@ import Foundation
 import CoreData
 
 struct DocumentData {
-    var content: String
-    var dateCreated: Date
+    var content: String?
+    var dateCreated: Date?
     var format: String?
-    var id: UUID
+    var id: UUID?
     var readingTime: Float?
-    var title: String
+    var title: String?
     
     func generateCoreDataDocumentObject(persistenceContainer: NSManagedObjectContext) -> DocumentObject? {
         let coreDataDocument = DocumentObject(context: persistenceContainer)
@@ -38,17 +38,20 @@ class DocumentStorage: NSObject {
         let context = PersistenceContainer.shared.container.viewContext
         let fetchRequest: NSFetchRequest<DocumentObjects> = DocumentObjects.fetchRequest()
         
-        context.perform { [weak self] in
-            guard let self = self else { return }
+        context.perform {
             do {
                 let result = try fetchRequest.execute()
-                if let documents = result.first?.documentList as? Set<DocumentObject> {
-                    let documentList = documents.map { $0.convertToDocumentData() }
-                    self.documentList = documentList
-                    completionHandler(documentList)
+                var documentListToReturn = [DocumentData]()
+                result.forEach {
+                    $0.documentList?.forEach({
+                        if let document = $0 as? DocumentObject {
+                            documentListToReturn.append(document.convertToDocumentData())
+                        }
+                    })
                 }
+                completionHandler(documentListToReturn)
             } catch {
-                print("Error")
+                print("Something went wrong: \(error.localizedDescription)")
                 completionHandler(nil)
             }
         }
@@ -58,7 +61,7 @@ class DocumentStorage: NSObject {
         let persistenceContainer = PersistenceContainer.shared.container.viewContext
         if let documentObject = document.generateCoreDataDocumentObject(persistenceContainer: persistenceContainer) {
             let documents = DocumentObjects(context: persistenceContainer)
-            documents.addToDocumentList(documentObject)
+            documents.addToDocumentList(NSSet(object: documentObject))
             PersistenceContainer.shared.saveContext()
             completionHandler(true)
         } else {

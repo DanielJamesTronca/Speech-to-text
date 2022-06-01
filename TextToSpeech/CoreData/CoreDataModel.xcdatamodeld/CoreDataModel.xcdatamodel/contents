@@ -10,7 +10,7 @@
         <relationship name="documents" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="DocumentObjects" inverseName="documentList" inverseEntity="DocumentObjects"/>
     </entity>
     <entity name="DocumentObjects" representedClassName=".DocumentObjects" syncable="YES">
-        <relationship name="documentList" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="DocumentObject" inverseName="documents" inverseEntity="DocumentObject"/>
+        <relationship name="documentList" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="DocumentObject" inverseName="documents" inverseEntity="DocumentObject"/>
     </entity>
     <elements>
         <element name="DocumentObject" positionX="-63" positionY="-18" width="128" height="134"/>

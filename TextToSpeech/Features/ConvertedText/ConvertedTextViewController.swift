@@ -61,7 +61,7 @@ class ConvertedTextViewController: UIViewController {
     }
     
     private func readText() {
-        let utterance = AVSpeechUtterance(string: document.content)
+        let utterance = AVSpeechUtterance(string: document.content ?? "")
         utterance.voice = AVSpeechSynthesisVoice(language: "en-GB")
         utterance.rate = 0.5
         synthesizer.delegate = self
