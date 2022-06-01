@@ -11,7 +11,9 @@ import UIKit
 class DocumentCollectionViewCell: UICollectionViewCell, Reusable {
     
     struct Configuration {
-        let addLabel: String
+        let content: String?
+        let title: String?
+        let date: String
         let isLoading: Bool
     }
     
@@ -89,9 +91,9 @@ class DocumentCollectionViewCell: UICollectionViewCell, Reusable {
      }
     
     public func configure(with configuration: Configuration) {
-        titleLabel.text = "DAniel"
+        titleLabel.text = configuration.title ?? ""
         dateLabel.text = "12/13/12"
-        contentLabel.text = configuration.addLabel
+        contentLabel.text = configuration.content ?? ""
         if configuration.isLoading {
             contentLabel.isHidden = true
             activityIndicator.isHidden = false

@@ -53,7 +53,8 @@ extension AppCoordinator: DashboardViewControllerDelegate {
                 dashboardViewController.addNewDocument(
                     documentConfiguration: self.appManager.createDashboardViewControllerNewDocumentConfiguration(
                         documentName: documentUrl.lastPathComponent,
-                        isLoading: false
+                        isLoading: false,
+                        content: document?.content
                     )
                 )
                 if let document = document {

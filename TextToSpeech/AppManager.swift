@@ -27,7 +27,12 @@ class AppManager {
                 cells.append(
                     DashboardCellItem(
                         cellConfiguration: .documentCell(
-                            configuration: DocumentCollectionViewCell.Configuration(addLabel: $0.content!, isLoading: false)
+                            configuration: DocumentCollectionViewCell.Configuration(
+                                content: $0.content,
+                                title: $0.title,
+                                date: "12/12/98",
+                                isLoading: false
+                            )
                         ),
                         cellAction: .didTapDocument(document: $0)
                     )
@@ -38,11 +43,13 @@ class AppManager {
         return DashboardViewController.Configuration(source: cells)
     }
     
-    func createDashboardViewControllerNewDocumentConfiguration(documentName: String, isLoading: Bool) -> DashboardCellItem {
+    func createDashboardViewControllerNewDocumentConfiguration(documentName: String, isLoading: Bool, content: String? = nil) -> DashboardCellItem {
         return DashboardCellItem(
             cellConfiguration: .documentCell(
                 configuration: DocumentCollectionViewCell.Configuration(
-                    addLabel: documentName,
+                    content: content,
+                    title: documentName,
+                    date: "12/12/98",
                     isLoading: isLoading
                 )
             ),
