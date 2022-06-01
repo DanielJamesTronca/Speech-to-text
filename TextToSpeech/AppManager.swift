@@ -35,4 +35,16 @@ class AppManager {
         
         return DashboardViewController.Configuration(source: cells)
     }
+    
+    func createDashboardViewControllerNewDocumentConfiguration(documentName: String, isLoading: Bool) -> DashboardCellItem {
+        return DashboardCellItem(
+            cellConfiguration: .documentCell(
+                configuration: DocumentCollectionViewCell.Configuration(
+                    addLabel: documentName,
+                    isLoading: isLoading
+                )
+            ),
+            cellAction: .none
+        )
+    }
 }

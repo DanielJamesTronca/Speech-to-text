@@ -49,12 +49,13 @@ class DashboardViewController: UIViewController {
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         collectionView.backgroundColor = UIColor.black
         collectionView.showsVerticalScrollIndicator = false
+        collectionView.alwaysBounceVertical = true
         return collectionView
     }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = UIColor.black
+        view.backgroundColor = UIColor.backgroundColor
         navigationController?.navigationBar.prefersLargeTitles = true
         title = "Speech to text"
         layout()
@@ -62,14 +63,22 @@ class DashboardViewController: UIViewController {
     
     public func configure(with configuration: Configuration) {
         self.configuration = configuration
-        DispatchQueue.main.async {
-            self.collectionView.reloadData()
-        }
+    }
+    
+    public func addNewDocument(documentConfiguration: DashboardCellItem) {
+        configuration.source.insert(documentConfiguration, at: 1)
+        collectionView.reloadItems(at: [IndexPath(row: 1, section: 0)])
+    }
+    
+    public func removeNewDocument() {
+        configuration.source.remove(at: 1)
     }
     
     private func layout() {
+        // Configure collection view
         collectionView.delegate = self
         collectionView.dataSource = self
+        // Configure constraints
         view.addSubview(collectionView)
         NSLayoutConstraint.activate([
             collectionView.topAnchor.constraint(equalTo: view.topAnchor),
@@ -77,7 +86,7 @@ class DashboardViewController: UIViewController {
             collectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             collectionView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
         ])
-        
+        // Register cell
         collectionView.register(cell: AddDocumentCollectionViewCell.self)
         collectionView.register(cell: DocumentCollectionViewCell.self)
     }
@@ -125,7 +134,7 @@ extension DashboardViewController: UICollectionViewDelegateFlowLayout {
         layout _: UICollectionViewLayout,
         insetForSectionAt section: Int
     ) -> UIEdgeInsets {
-        return UIEdgeInsets(top: .zero, left: 16.0, bottom: .zero, right: 16.0)
+        return UIEdgeInsets(top: 16.0, left: 16.0, bottom: 16.0, right: 16.0)
     }
     
     func collectionView(

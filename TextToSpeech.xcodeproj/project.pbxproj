@@ -12,6 +12,8 @@
 		34773F34284646060084F611 /* DashboardCellAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34773F33284646060084F611 /* DashboardCellAction.swift */; };
 		34773F362846477F0084F611 /* DocumentRecognitionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34773F352846477F0084F611 /* DocumentRecognitionManager.swift */; };
 		34773F3828466E010084F611 /* DocumentCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34773F3728466E010084F611 /* DocumentCollectionViewCell.swift */; };
+		34773F3A28474AFD0084F611 /* AppColors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 34773F3928474AFD0084F611 /* AppColors.xcassets */; };
+		34773F3C28474B780084F611 /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34773F3B28474B780084F611 /* UIColor+Extension.swift */; };
 		349491A42843AD090009B0AE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 349491A32843AD090009B0AE /* AppDelegate.swift */; };
 		349491A82843AD090009B0AE /* DashboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 349491A72843AD090009B0AE /* DashboardViewController.swift */; };
 		349491AD2843AD0A0009B0AE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 349491AC2843AD0A0009B0AE /* Assets.xcassets */; };
@@ -50,6 +52,8 @@
 		34773F33284646060084F611 /* DashboardCellAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardCellAction.swift; sourceTree = "<group>"; };
 		34773F352846477F0084F611 /* DocumentRecognitionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentRecognitionManager.swift; sourceTree = "<group>"; };
 		34773F3728466E010084F611 /* DocumentCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentCollectionViewCell.swift; sourceTree = "<group>"; };
+		34773F3928474AFD0084F611 /* AppColors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = AppColors.xcassets; sourceTree = "<group>"; };
+		34773F3B28474B780084F611 /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
 		349491A02843AD090009B0AE /* TextToSpeech.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TextToSpeech.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		349491A32843AD090009B0AE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		349491A72843AD090009B0AE /* DashboardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardViewController.swift; sourceTree = "<group>"; };
@@ -120,13 +124,13 @@
 			children = (
 				349491B12843AD0A0009B0AE /* Info.plist */,
 				349491D32843B6140009B0AE /* TextToSpeech.entitlements */,
+				349491DC28463F900009B0AE /* Resources */,
 				349491E7284640980009B0AE /* Utils */,
 				349491E6284640850009B0AE /* Extensions */,
 				349491DA28463E5D0009B0AE /* AppManager.swift */,
 				349491D828463C070009B0AE /* AppCoordinator.swift */,
 				349491DF28463FB50009B0AE /* Features */,
 				349491DD28463FA40009B0AE /* Application */,
-				349491DC28463F900009B0AE /* Resources */,
 			);
 			path = TextToSpeech;
 			sourceTree = "<group>";
@@ -153,6 +157,7 @@
 			children = (
 				349491AE2843AD0A0009B0AE /* LaunchScreen.storyboard */,
 				349491AC2843AD0A0009B0AE /* Assets.xcassets */,
+				34773F3928474AFD0084F611 /* AppColors.xcassets */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -216,6 +221,7 @@
 			isa = PBXGroup;
 			children = (
 				349491EA284640C60009B0AE /* UICollectionView+Extension.swift */,
+				34773F3B28474B780084F611 /* UIColor+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -334,6 +340,7 @@
 			files = (
 				349491B02843AD0A0009B0AE /* LaunchScreen.storyboard in Resources */,
 				349491AD2843AD0A0009B0AE /* Assets.xcassets in Resources */,
+				34773F3A28474AFD0084F611 /* AppColors.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -365,6 +372,7 @@
 				34773F30284645F60084F611 /* DashboardCellItem.swift in Sources */,
 				349491A82843AD090009B0AE /* DashboardViewController.swift in Sources */,
 				349491E5284640460009B0AE /* AddDocumentCollectionViewCell.swift in Sources */,
+				34773F3C28474B780084F611 /* UIColor+Extension.swift in Sources */,
 				34773F3828466E010084F611 /* DocumentCollectionViewCell.swift in Sources */,
 				349491A42843AD090009B0AE /* AppDelegate.swift in Sources */,
 				34773F32284645FE0084F611 /* DashboardCellEnum.swift in Sources */,
