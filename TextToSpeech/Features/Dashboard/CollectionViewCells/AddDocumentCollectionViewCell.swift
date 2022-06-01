@@ -33,9 +33,7 @@ class AddDocumentCollectionViewCell: UICollectionViewCell, Reusable {
     }
     
     private func generateView() {
-        contentView.layer.cornerRadius = 16.0
-        contentView.clipsToBounds = true
-        contentView.layer.borderWidth = 2.0
+        contentView.addDashedBorder()
         contentView.layer.borderColor = UIColor.white.cgColor
         contentView.addSubview(addLabel)
         NSLayoutConstraint.activate([
@@ -47,5 +45,26 @@ class AddDocumentCollectionViewCell: UICollectionViewCell, Reusable {
     override func prepareForReuse() {
         super.prepareForReuse()
         
+    }
+}
+
+extension UIView {
+  func addDashedBorder() {
+    let color = UIColor.blue.cgColor
+
+    let shapeLayer:CAShapeLayer = CAShapeLayer()
+    let frameSize = self.frame.size
+    let shapeRect = CGRect(x: 0, y: 0, width: frameSize.width, height: frameSize.height)
+
+    shapeLayer.bounds = shapeRect
+    shapeLayer.position = CGPoint(x: frameSize.width/2, y: frameSize.height/2)
+    shapeLayer.fillColor = UIColor.clear.cgColor
+    shapeLayer.strokeColor = color
+    shapeLayer.lineWidth = 1
+    shapeLayer.lineJoin = CAShapeLayerLineJoin.round
+    shapeLayer.lineDashPattern = [6,2]
+    shapeLayer.path = UIBezierPath(roundedRect: shapeRect, cornerRadius: 5).cgPath
+
+    self.layer.addSublayer(shapeLayer)
     }
 }

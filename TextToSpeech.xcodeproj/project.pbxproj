@@ -21,6 +21,7 @@
 		34773F8328476E730084F611 /* DocumentObjects+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34773F7F28476E730084F611 /* DocumentObjects+CoreDataProperties.swift */; };
 		34773F8428476E730084F611 /* DocumentObject+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34773F8028476E730084F611 /* DocumentObject+CoreDataClass.swift */; };
 		34773F8528476E730084F611 /* DocumentObject+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34773F8128476E730084F611 /* DocumentObject+CoreDataProperties.swift */; };
+		34773F8828479A340084F611 /* DocumentData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34773F8728479A340084F611 /* DocumentData.swift */; };
 		349491A42843AD090009B0AE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 349491A32843AD090009B0AE /* AppDelegate.swift */; };
 		349491A82843AD090009B0AE /* DashboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 349491A72843AD090009B0AE /* DashboardViewController.swift */; };
 		349491AD2843AD0A0009B0AE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 349491AC2843AD0A0009B0AE /* Assets.xcassets */; };
@@ -68,6 +69,7 @@
 		34773F7F28476E730084F611 /* DocumentObjects+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DocumentObjects+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		34773F8028476E730084F611 /* DocumentObject+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DocumentObject+CoreDataClass.swift"; sourceTree = "<group>"; };
 		34773F8128476E730084F611 /* DocumentObject+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DocumentObject+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		34773F8728479A340084F611 /* DocumentData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentData.swift; sourceTree = "<group>"; };
 		349491A02843AD090009B0AE /* TextToSpeech.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TextToSpeech.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		349491A32843AD090009B0AE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		349491A72843AD090009B0AE /* DashboardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardViewController.swift; sourceTree = "<group>"; };
@@ -135,6 +137,14 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		34773F8628479A250084F611 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				34773F8728479A340084F611 /* DocumentData.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 		349491972843AD090009B0AE = {
 			isa = PBXGroup;
 			children = (
@@ -158,6 +168,7 @@
 		349491A22843AD090009B0AE /* TextToSpeech */ = {
 			isa = PBXGroup;
 			children = (
+				34773F8628479A250084F611 /* Models */,
 				349491B12843AD0A0009B0AE /* Info.plist */,
 				349491D32843B6140009B0AE /* TextToSpeech.entitlements */,
 				349491DA28463E5D0009B0AE /* AppManager.swift */,
@@ -418,6 +429,7 @@
 				349491A42843AD090009B0AE /* AppDelegate.swift in Sources */,
 				34773F32284645FE0084F611 /* DashboardCellEnum.swift in Sources */,
 				34773F8328476E730084F611 /* DocumentObjects+CoreDataProperties.swift in Sources */,
+				34773F8828479A340084F611 /* DocumentData.swift in Sources */,
 				34773F34284646060084F611 /* DashboardCellAction.swift in Sources */,
 				349491D728452D630009B0AE /* ConvertedTextViewController.swift in Sources */,
 				349491E9284640A20009B0AE /* Reusable.swift in Sources */,

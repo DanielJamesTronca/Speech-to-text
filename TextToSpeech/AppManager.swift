@@ -26,8 +26,8 @@ class AppManager {
             documents.forEach {
                 cells.append(
                     DashboardCellItem(
-                        cellConfiguration: .addDocumentCell(
-                            configuration: AddDocumentCollectionViewCell.Configuration(addLabel: $0.title!)
+                        cellConfiguration: .documentCell(
+                            configuration: DocumentCollectionViewCell.Configuration(addLabel: $0.content!, isLoading: false)
                         ),
                         cellAction: .didTapDocument(document: $0)
                     )

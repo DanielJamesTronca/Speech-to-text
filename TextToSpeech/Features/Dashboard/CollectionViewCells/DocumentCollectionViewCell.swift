@@ -15,10 +15,26 @@ class DocumentCollectionViewCell: UICollectionViewCell, Reusable {
         let isLoading: Bool
     }
     
+    private lazy var containerStackView: UIStackView = {
+        let stackView: UIStackView = UIStackView()
+        stackView.translatesAutoresizingMaskIntoConstraints = false
+        stackView.axis = .vertical
+        stackView.spacing = 4.0
+        stackView.distribution = .fillProportionally
+        return stackView
+    }()
+    
+    private lazy var mainView: UIView = {
+        let view: UIView = UIView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
+    
     private lazy var stackView: UIStackView = {
         let stackView: UIStackView = UIStackView()
         stackView.translatesAutoresizingMaskIntoConstraints = false
         stackView.axis = .vertical
+        stackView.distribution = .fillProportionally
         return stackView
     }()
     
@@ -28,10 +44,39 @@ class DocumentCollectionViewCell: UICollectionViewCell, Reusable {
         return activityIndicator
     }()
     
-    private lazy var addLabel: UILabel = {
+    private lazy var contentLabel: UILabel = {
         let label: UILabel = UILabel()
+        label.font = UIFont.systemFont(ofSize: 6.0)
+        label.numberOfLines = 20
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
+    }()
+    
+    private lazy var titleLabel: UILabel = {
+        let label: UILabel = UILabel()
+        label.font = UIFont.systemFont(ofSize: 16.0)
+        label.numberOfLines = 0
+        label.textAlignment = .center
+        label.textColor = UIColor.white
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
+    
+    private lazy var dateLabel: UILabel = {
+        let label: UILabel = UILabel()
+        label.font = UIFont.systemFont(ofSize: 12.0)
+        label.numberOfLines = 0
+        label.textAlignment = .center
+        label.textColor = UIColor.gray
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
+    
+    private lazy var imageView: UIImageView = {
+        let imageView: UIImageView = UIImageView()
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        imageView.image = UIImage(systemName: "folder.fill")
+        return imageView
     }()
 
     override init(frame: CGRect) {
@@ -44,31 +89,43 @@ class DocumentCollectionViewCell: UICollectionViewCell, Reusable {
      }
     
     public func configure(with configuration: Configuration) {
-        addLabel.text = configuration.addLabel
+        titleLabel.text = "DAniel"
+        dateLabel.text = "12/13/12"
+        contentLabel.text = configuration.addLabel
         if configuration.isLoading {
-            addLabel.isHidden = true
+            contentLabel.isHidden = true
             activityIndicator.isHidden = false
             activityIndicator.startAnimating()
         } else {
             activityIndicator.isHidden = true
-            addLabel.isHidden = false
+            contentLabel.isHidden = false
             activityIndicator.stopAnimating()
         }
     }
     
     private func generateView() {
-        contentView.layer.cornerRadius = 16.0
-        contentView.clipsToBounds = true
-        contentView.layer.borderWidth = 2.0
-        contentView.layer.borderColor = UIColor.white.cgColor
-        contentView.addSubview(stackView)
+        contentView.backgroundColor = UIColor.appBackgroundColor
+        contentView.addSubview(containerStackView)
+        
+        mainView.backgroundColor = UIColor.black
+        mainView.layer.cornerRadius = 16.0
+        mainView.clipsToBounds = true
+        
+        [mainView, titleLabel, dateLabel].forEach(containerStackView.addArrangedSubview(_:))
+        
+        mainView.addSubview(stackView)
         activityIndicator.color = UIColor.red
-        [activityIndicator, addLabel].forEach(stackView.addArrangedSubview(_:))
+        [activityIndicator, contentLabel].forEach(stackView.addArrangedSubview(_:))
         NSLayoutConstraint.activate([
-            stackView.topAnchor.constraint(equalTo: contentView.topAnchor),
-            stackView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
-            stackView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
-            stackView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor)
+            containerStackView.topAnchor.constraint(equalTo: contentView.topAnchor),
+            containerStackView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
+            containerStackView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
+            containerStackView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
+            
+            stackView.topAnchor.constraint(equalTo: mainView.topAnchor, constant: 8.0),
+            stackView.leadingAnchor.constraint(equalTo: mainView.leadingAnchor, constant: 8.0),
+            stackView.trailingAnchor.constraint(equalTo: mainView.trailingAnchor, constant: -8.0),
+            stackView.bottomAnchor.constraint(equalTo: mainView.bottomAnchor, constant: -8.0),
         ])
     }
     

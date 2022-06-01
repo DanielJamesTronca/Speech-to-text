@@ -145,9 +145,8 @@ extension DashboardViewController: UICollectionViewDelegateFlowLayout {
         layout _: UICollectionViewLayout,
         sizeForItemAt indexPath: IndexPath
     ) -> CGSize {
-        let padding: CGFloat = 16.0
-        let collectionViewSize = collectionView.frame.size.width - padding - 32.0
-        return CGSize(width: collectionViewSize/2, height: 128)
+        let collectionViewSize = collectionView.frame.size.width - 72.0
+        return CGSize(width: collectionViewSize/3, height: 196)
     }
 }
 
