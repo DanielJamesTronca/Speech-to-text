@@ -43,11 +43,18 @@ class ConvertedTextViewController: UIViewController {
         return textView
     }()
     
+    private lazy var barView: ConvertedTextBarView = {
+        let view: ConvertedTextBarView = ConvertedTextBarView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        readText()
         view.addSubview(textView)
         view.backgroundColor = UIColor.appBackgroundColor
+        navigationItem.titleView = barView
+        barView.delegate = self
         NSLayoutConstraint.activate([
             textView.topAnchor.constraint(equalTo: view.topAnchor),
             textView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16.0),
@@ -70,7 +77,6 @@ class ConvertedTextViewController: UIViewController {
         utterance.rate = 0.5
         synthesizer.delegate = self
         synthesizer.speak(utterance)
-        
     }
 }
 
@@ -134,6 +140,23 @@ extension ConvertedTextViewController: AVSpeechSynthesizerDelegate {
         if currentUtterance == totalUtterances {
             unselectLastWord()
             previousSelectedRange = nil
+        }
+    }
+}
+
+extension ConvertedTextViewController: ConvertedTextBarViewDelegate {
+    func convertedTextBarViewDidTapMainAction(action: ConvertedTextBarAction) {
+        switch action {
+        case .play:
+            if synthesizer.isPaused {
+                synthesizer.continueSpeaking()
+            } else {
+                readText()
+                barView.triggerTimer()
+            }
+        case .pause:
+            synthesizer.pauseSpeaking(at: .word)
+            barView.invalidateTimer()
         }
     }
 }

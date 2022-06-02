@@ -76,6 +76,7 @@ extension AppCoordinator: DashboardViewControllerDelegate {
     func dashboardViewControllerDidTapDocument(from dashboardViewController: DashboardViewController, document: DocumentData) {
         let convertedTextViewController: ConvertedTextViewController = ConvertedTextViewController(document: document)
         convertedTextViewController.title = document.title
+        dashboardViewController.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
         dashboardViewController.navigationController?.pushViewController(convertedTextViewController, animated: true)
     }
     

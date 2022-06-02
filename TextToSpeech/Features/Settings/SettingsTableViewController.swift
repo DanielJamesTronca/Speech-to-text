@@ -13,6 +13,8 @@ class SettingsTableViewController: UITableViewController {
         super.viewDidLoad()
         title = "Settings"
         navigationController?.navigationBar.prefersLargeTitles = true
+        tableView.backgroundColor = UIColor.appBackgroundColor
+        view.backgroundColor = UIColor.appBackgroundColor
     }
 
     // MARK: - Table view data source

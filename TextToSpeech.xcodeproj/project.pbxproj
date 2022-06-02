@@ -36,6 +36,9 @@
 		349491E9284640A20009B0AE /* Reusable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 349491E8284640A20009B0AE /* Reusable.swift */; };
 		349491EB284640C60009B0AE /* UICollectionView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 349491EA284640C60009B0AE /* UICollectionView+Extension.swift */; };
 		34C7B1992847DE7D00A5F68B /* SettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34C7B1982847DE7D00A5F68B /* SettingsTableViewController.swift */; };
+		34C7B19B2847F8C700A5F68B /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34C7B19A2847F8C700A5F68B /* UIView+Extension.swift */; };
+		34C7B19E2847F9A800A5F68B /* ConvertedTextBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34C7B19D2847F9A800A5F68B /* ConvertedTextBarView.swift */; };
+		34C7B1A028489FB400A5F68B /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34C7B19F28489FB400A5F68B /* Utils.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -90,6 +93,9 @@
 		349491E8284640A20009B0AE /* Reusable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reusable.swift; sourceTree = "<group>"; };
 		349491EA284640C60009B0AE /* UICollectionView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionView+Extension.swift"; sourceTree = "<group>"; };
 		34C7B1982847DE7D00A5F68B /* SettingsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTableViewController.swift; sourceTree = "<group>"; };
+		34C7B19A2847F8C700A5F68B /* UIView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
+		34C7B19D2847F9A800A5F68B /* ConvertedTextBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConvertedTextBarView.swift; sourceTree = "<group>"; };
+		34C7B19F28489FB400A5F68B /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -244,6 +250,7 @@
 		349491E128463FC20009B0AE /* ConvertedText */ = {
 			isa = PBXGroup;
 			children = (
+				34C7B19C2847F96D00A5F68B /* Components */,
 				349491D628452D630009B0AE /* ConvertedTextViewController.swift */,
 			);
 			path = ConvertedText;
@@ -273,6 +280,7 @@
 			children = (
 				349491EA284640C60009B0AE /* UICollectionView+Extension.swift */,
 				34773F3B28474B780084F611 /* UIColor+Extension.swift */,
+				34C7B19A2847F8C700A5F68B /* UIView+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -281,6 +289,7 @@
 			isa = PBXGroup;
 			children = (
 				349491E8284640A20009B0AE /* Reusable.swift */,
+				34C7B19F28489FB400A5F68B /* Utils.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -291,6 +300,14 @@
 				34C7B1982847DE7D00A5F68B /* SettingsTableViewController.swift */,
 			);
 			path = Settings;
+			sourceTree = "<group>";
+		};
+		34C7B19C2847F96D00A5F68B /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				34C7B19D2847F9A800A5F68B /* ConvertedTextBarView.swift */,
+			);
+			path = Components;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -429,6 +446,7 @@
 				349491D928463C070009B0AE /* AppCoordinator.swift in Sources */,
 				34773F8528476E730084F611 /* DocumentObject+CoreDataProperties.swift in Sources */,
 				349491DB28463E5D0009B0AE /* AppManager.swift in Sources */,
+				34C7B1A028489FB400A5F68B /* Utils.swift in Sources */,
 				34773F30284645F60084F611 /* DashboardCellItem.swift in Sources */,
 				349491A82843AD090009B0AE /* DashboardViewController.swift in Sources */,
 				34773F4228474EF10084F611 /* CoreDataModel.xcdatamodeld in Sources */,
@@ -442,11 +460,13 @@
 				34773F8328476E730084F611 /* DocumentObjects+CoreDataProperties.swift in Sources */,
 				34773F8828479A340084F611 /* DocumentData.swift in Sources */,
 				34773F34284646060084F611 /* DashboardCellAction.swift in Sources */,
+				34C7B19B2847F8C700A5F68B /* UIView+Extension.swift in Sources */,
 				349491D728452D630009B0AE /* ConvertedTextViewController.swift in Sources */,
 				349491E9284640A20009B0AE /* Reusable.swift in Sources */,
 				34773F5128475B1E0084F611 /* DocumentStorage.swift in Sources */,
 				34C7B1992847DE7D00A5F68B /* SettingsTableViewController.swift in Sources */,
 				34773F3F28474EDA0084F611 /* PersistenceContainer.swift in Sources */,
+				34C7B19E2847F9A800A5F68B /* ConvertedTextBarView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
